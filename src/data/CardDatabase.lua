@@ -3,7 +3,6 @@ local CardDatabase = {}
 --여기에 카드 등록
 --키는 카드 Id, 값은 클래스 자체로 저장
 CardDatabase.classes = {
-    strike = require 'src.objects.cards.Strike',
     dummy = require 'src.objects.cards.Dummy',
     --여기에 다른 카드들도 추가
 }
