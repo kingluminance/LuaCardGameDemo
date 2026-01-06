@@ -1,41 +1,14 @@
-# Compiled Lua sources
-luac.out
+# .gitignore
 
-# luarocks build files
-*.src.rock
-*.zip
-*.tar.gz
+# 1. OS 시스템 파일 (맥, 윈도우 찌꺼기)
+.DS_Store
+Thumbs.db
 
-# Object files
-*.o
-*.os
-*.ko
-*.obj
-*.elf
+# 2. 텍스트 에디터 설정 파일 (VS Code 등)
+.vscode/
+.idea/
 
-# Precompiled Headers
-*.gch
-*.pch
-
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
-*.def
-*.exp
-
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
-
-# Executables
+# 3. 빌드된 게임 파일 
+*.love
 *.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
-
+/dist/

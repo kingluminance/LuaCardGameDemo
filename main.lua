@@ -11,10 +11,17 @@ suit = require 'lib.suit'
 function love.load()
     love.graphics.setDefaultFilter('nearest', 'nearest')
     love.math.setRandomSeed(os.time())
-    
-    -- [수정] 이제 파일이 있으니 require하고 바로 스위치!
+    -- 시작 씬으로 전환
     local TitleScene = require 'src.scenes.TitleScene'
     Gamestate.switch(TitleScene)
+
+    -- 한글 폰트 설정
+    -- 1. 폰트 로드
+    local krFont = love.graphics.newFont("assets/fonts/나눔고딕/NanumGothic.otf", 20)
+    -- 2. LÖVE 기본 폰트로 설정 (love.graphics.print 등에 적용)
+    love.graphics.setFont(krFont)
+    -- 3. SUIT UI 폰트로 설정 (suit 위젯들에 적용)
+    suit.theme.font = krFont 
 end
 
 -- 3. 메인 루프 연결 (HUMP Gamestate가 알아서 다 해줌)
