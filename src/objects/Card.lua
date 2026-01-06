@@ -9,17 +9,32 @@ function Card:new(id, name, cost, description)
     -- self.image = love.graphics.newImage("assets/cards/" .. self.id .. ".png") or nil
 end
 
-function Card:onUse(target)
-    -- Default behavior when the card is used
-    print(self.name .. " used on ")
+-- [!] 핵심: UI 업데이트 및 그리기 등록 함수
+-- 이 함수는 GameScene의 update에서 호출됩니다.
+function Card:updateUI(x, y, idx)
+    -- 1. 버튼의 모양과 위치 정의
+    -- Make a unique string id for SUIT so multiple cards don't share the same id
+    local idstr = "card_" .. (self.id or "unknown") .. "_" .. (idx or "0")
+
+    local btnState = suit.Button(self.name .. "\n(" .. self.cost .. ")", {
+        id = idstr,
+        align = "center",
+        valign = "center"
+    }, x, y, 100, 150)
+
+    -- 2. 마우스를 올렸을 때 툴팁(설명)을 상태로 저장 (그리기는 draw에서 처리)
+    if btnState.hovered then
+        self.tooltip = { text = self.description, x = x, y = y - 20 }
+    else
+        self.tooltip = nil
+    end
+
+    -- 3. 클릭 되었는지 여부 반환 (.hit)
+    return btnState.hit
 end
 
-function Card:draw(x,y)
-    love.graphics.setColor(1, 1, 1)
-    love.graphics.rectangle("line", x, y, 100, 150)
-    love.graphics.print(self.name, x + 5, y + 5)
-    love.graphics.print("Cost: " .. self.cost, x + 5, y + 20)
-    love.graphics.printf(self.description, x + 5, y + 50, 90, "left")
+function Card:onUse(target)
+    print(self.name .. " 사용됨!")
 end
 
 return Card

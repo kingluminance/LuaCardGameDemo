@@ -7,6 +7,9 @@ Timer = require 'lib.hump.timer'
 Binser = require 'lib.binser'
 suit = require 'lib.suit'
 
+-- 1-1. 게임 데이터 로드
+local PlayerData = require 'src.data.PlayerData'
+
 -- 2. 초기화
 function love.load()
     love.graphics.setDefaultFilter('nearest', 'nearest')
