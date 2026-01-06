@@ -12,6 +12,8 @@ function GameScene:enter()
     table.insert(self.hand, CardDatabase:createCard('dummy'))
     table.insert(self.hand, CardDatabase:createCard('dummy'))
     table.insert(self.hand, CardDatabase:createCard('dummy'))
+    table.insert(self.hand, CardDatabase:createCard('dummy'))
+    table.insert(self.hand, CardDatabase:createCard('dummy'))
 end
 
 function GameScene:update(dt)
